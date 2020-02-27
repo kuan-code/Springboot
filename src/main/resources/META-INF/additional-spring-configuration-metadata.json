@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "github.cilentSecret",
+      "type": "java.lang.String",
+      "description": "Description for github.cilentSecret."
+    },
+    {
+      "name": "github.cilentRedirect",
+      "type": "java.lang.String",
+      "description": "Description for github.cilentRedirect."
+    },
+    {
+      "name": "github.clientID",
+      "type": "java.lang.String",
+      "description": "Description for github.clientID."
+    }
+  ] }
