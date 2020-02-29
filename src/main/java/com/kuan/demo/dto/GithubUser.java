@@ -5,6 +5,7 @@ public class GithubUser {
     private Long id;
     private String bio;
 
+
     public String getName() {
         return name;
     }

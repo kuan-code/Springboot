@@ -1,0 +1,1 @@
+alter table USER add headimg VARCHAR(100);

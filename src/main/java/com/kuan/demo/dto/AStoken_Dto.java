@@ -46,4 +46,15 @@ public class AStoken_Dto {
     public void setState(String state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "AStoken_Dto{" +
+                "client_id='" + client_id + '\'' +
+                ", Client_secret='" + Client_secret + '\'' +
+                ", code='" + code + '\'' +
+                ", redirect_url='" + redirect_url + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

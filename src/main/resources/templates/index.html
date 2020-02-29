@@ -16,12 +16,13 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.user} == null">
                 <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=bbf3271b736489a25f76&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    我
+            <li class="nav-item dropdown" th:unless="${session.user} == null">
+                <img style="width: 50px;height: 50px" th:src="${session.user.getHeadimg()}"  alt="">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
+
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">消息中心</a>

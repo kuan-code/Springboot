@@ -2,12 +2,20 @@ package com.kuan.demo.controller;
 
 import com.kuan.demo.dto.AStoken_Dto;
 import com.kuan.demo.dto.GithubUser;
+import com.kuan.demo.mapper.UserMapper;
+import com.kuan.demo.model.User;
 import com.kuan.demo.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.jws.soap.SOAPBinding;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 @Controller
 public class LoginController {
@@ -23,9 +31,15 @@ public class LoginController {
 
     @Value("${github.cilent.Redirect}")
     private String cilentRedirect;
+
+    @Autowired
+    private UserMapper userMapper;
+
     @GetMapping("/callback")
     public String AS_token(@RequestParam(name = "code") String code,
-                           @RequestParam(name = "state") String state) {
+                           @RequestParam(name = "state") String state,
+                           HttpServletRequest req,
+                           HttpServletResponse resp) {
         AStoken_Dto aStoken_dto = new AStoken_Dto();
         aStoken_dto.setClient_id(cilentId);
         aStoken_dto.setClient_secret(cilentSecret);
@@ -33,9 +47,24 @@ public class LoginController {
         aStoken_dto.setState(state);
         aStoken_dto.setRedirect_url(cilentRedirect);
         String asToken = githubProvider.getAsToken(aStoken_dto);
-        GithubUser user = githubProvider.getUser(asToken);
-        System.out.println(user.getName());
-        return "index";
-
+        GithubUser githubuser = githubProvider.getUser(asToken);
+        if (githubuser != null){
+            //登录成功
+            User user = new User();
+            String id = String.valueOf(githubuser.getId());
+            user.setHeadimg("https://avatars.githubusercontent.com/u/"+id);
+            user.setAccount_id(String.valueOf(githubuser.getId()));
+            user.setName(githubuser.getName());
+            String token = UUID.randomUUID().toString();
+            user.setToken(token);
+            user.setGmt_create(System.currentTimeMillis());
+            user.setGmt_modified(user.getGmt_create());
+            userMapper.insert(user);
+            resp.addCookie(new Cookie("token",token));
+            return "redirect:/";
+        }else{
+            //登陆失败
+            return "redirect:/";
+        }
     }
 }
