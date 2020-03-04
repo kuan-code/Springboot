@@ -55,6 +55,7 @@ public class LoginController {
             user.setHeadimg("https://avatars.githubusercontent.com/u/"+id);
             user.setAccount_id(String.valueOf(githubuser.getId()));
             user.setName(githubuser.getName());
+            user.setBio(githubuser.getBio());
             String token = UUID.randomUUID().toString();
             user.setToken(token);
             user.setGmt_create(System.currentTimeMillis());

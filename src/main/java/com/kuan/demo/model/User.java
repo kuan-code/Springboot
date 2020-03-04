@@ -10,6 +10,7 @@ public class User {
     private String token;
     private Long gmt_create;
     private Long gmt_modified;
+    private String bio;
     private String headimg;
 
     public String getHeadimg() {
@@ -18,6 +19,29 @@ public class User {
 
     public void setHeadimg(String headimg) {
         this.headimg = headimg;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", account_id='" + account_id + '\'' +
+                ", name='" + name + '\'' +
+                ", token='" + token + '\'' +
+                ", gmt_create=" + gmt_create +
+                ", gmt_modified=" + gmt_modified +
+                ", bio='" + bio + '\'' +
+                ", head_img='" + headimg + '\'' +
+                '}';
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     public int getId() {

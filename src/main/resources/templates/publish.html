@@ -1,9 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ti</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>主页</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/ckeditor/4.11.3/ckeditor.js"></script>
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
 </head>
@@ -37,6 +47,39 @@
         </form>
     </div>
 </nav>
+<div class="container-fluid border" style="margin-top: 30px;width: 90%">
+    <div class="row">
+        <div class="col-xl-9 col-lg-9 clo-md-12 clo-sm-12 border-right">
+            <h2><svg class="bi bi-documents" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M5 4h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6a1 1 0 00-1-1H5z" clip-rule="evenodd"></path>
+                <path d="M7 2h8a2 2 0 012 2v10a2 2 0 01-2 2v-1a1 1 0 001-1V4a1 1 0 00-1-1H7a1 1 0 00-1 1H5a2 2 0 012-2z"></path>
+            </svg>发起</h2>
+            <hr class="simple">
+            <form action="">
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）</label>
+                    <input type="text" class="form-control" id="title" placeholder="问题标题。。。">
+                </div>
+                <div class="form-group">
+                    <label for="bio">问题补充（必填，请参照右侧提示）</label>
+                    <textarea name="editor1" class="form-control" id="bio" rows="3"></textarea>
+                    <script>
+                        CKEDITOR.replace( 'editor1' );
+                    </script>
+                </div>
+                <button type="submit" class="btn btn-success">发布</button>
+            </form>
+        </div>
+        <div class="col-xl-3 col-lg-3 clo-md-12 clo-sm-12">
+            <h2>问题发起指南</h2>
+            <ul>
+                <li>问题标题：不超过25个字</li>
+                <li>问题补充：请详细描述</li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 <script type="application/javascript" src="js/headimg.js"></script>
+
 </html>
