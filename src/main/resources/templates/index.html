@@ -20,17 +20,18 @@
                 <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=bbf3271b736489a25f76&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
             </li>
             <li class="nav-item dropdown" th:unless="${session.user} == null">
-                <img id="head_img" src="" style="float: left;width: 50px;height: 50px"  alt="">
+                <img  id="head_img" src="" style="float: left;width: 50px;height: 50px;border-radius:50%"  alt="">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">消息中心</a>
                     <a class="dropdown-item" href="#">个人资料</a>
-                    <a class="dropdown-item" href="#">退出登录</a>
+                    <a class="dropdown-item" href="/logout">退出登录</a>
                 </div>
             </li>
         </ul>
+        <a class="btn btn-info" href="/publish">发起问题</a>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="问题搜索" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>

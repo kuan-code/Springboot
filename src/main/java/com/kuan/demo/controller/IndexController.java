@@ -29,6 +29,7 @@ public class IndexController {
                     User user = userMapper.checkToken(value);
                     if (user != null) {
                         res.getSession().setAttribute("user", user);
+                        res.getSession().setAttribute("userid",user.getAccount_id());
                     }
                     break;
                 }

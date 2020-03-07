@@ -30,17 +30,18 @@
                 <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=bbf3271b736489a25f76&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
             </li>
             <li class="nav-item dropdown" th:unless="${session.user} == null">
-                <img id="head_img" src="" style="float: left;width: 50px;height: 50px"  alt="">
+                <img id="head_img" src="" style="border-radius:50%;float: left;width: 50px;height: 50px"  alt="">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">消息中心</a>
                     <a class="dropdown-item" href="#">个人资料</a>
-                    <a class="dropdown-item" href="#">退出登录</a>
+                    <a class="dropdown-item" href="/logout">退出登录</a>
                 </div>
             </li>
         </ul>
+        <a class="btn btn-info" href="/publish">发起问题</a>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="问题搜索" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
@@ -55,18 +56,24 @@
                 <path d="M7 2h8a2 2 0 012 2v10a2 2 0 01-2 2v-1a1 1 0 001-1V4a1 1 0 00-1-1H7a1 1 0 00-1 1H5a2 2 0 012-2z"></path>
             </svg>发起</h2>
             <hr class="simple">
-            <form action="">
+            <form action="/publish" method="post">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）</label>
-                    <input type="text" class="form-control" id="title" placeholder="问题标题。。。">
+                    <input type="text" name="title" class="form-control" id="title" placeholder="问题标题。。。">
                 </div>
                 <div class="form-group">
                     <label for="bio">问题补充（必填，请参照右侧提示）</label>
-                    <textarea name="editor1" class="form-control" id="bio" rows="3"></textarea>
+                    <textarea name="description" class="form-control" id="bio" rows="3"></textarea>
                     <script>
-                        CKEDITOR.replace( 'editor1' );
+                        CKEDITOR.replace( 'description' );
                     </script>
                 </div>
+                <div class="form-group">
+                    <label for="tag">问题标签</label>
+                    <input type="text" class="form-control" name="tag" id="tag" placeholder="example:java,python...">
+                </div>
+
+                <span th:text="${error}"></span>
                 <button type="submit" class="btn btn-success">发布</button>
             </form>
         </div>
