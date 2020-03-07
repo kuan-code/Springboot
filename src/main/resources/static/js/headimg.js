@@ -10,7 +10,6 @@ function displayheadimg() {
         success: function (data) {
             var headimg = data;
             console.log(headimg);
-            alert(headimg);
             $("#head_img").attr("src",headimg);
         }
     })

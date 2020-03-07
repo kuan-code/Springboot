@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class User {
-    private int id;
+    private Integer id;
     private String account_id;
     private String name;
     private String token;
