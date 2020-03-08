@@ -29,6 +29,7 @@
             <li class="nav-item" th:if="${session.user} == null">
                 <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=bbf3271b736489a25f76&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
             </li>
+
             <li class="nav-item dropdown" th:unless="${session.user} == null">
                 <img id="head_img" src="" style="border-radius:50%;float: left;width: 50px;height: 50px"  alt="">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
@@ -48,6 +49,7 @@
         </form>
     </div>
 </nav>
+<span style="color: brown" th:text="${error}"></span>
 <div class="container-fluid border" style="margin-top: 30px;width: 90%">
     <div class="row">
         <div class="col-xl-9 col-lg-9 clo-md-12 clo-sm-12 border-right">
@@ -73,7 +75,7 @@
                     <input type="text" class="form-control" name="tag" id="tag" placeholder="example:java,python...">
                 </div>
 
-                <span th:text="${error}"></span>
+
                 <button type="submit" class="btn btn-success">发布</button>
             </form>
         </div>

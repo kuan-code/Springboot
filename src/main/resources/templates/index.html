@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
 </head>
 <body>
@@ -38,6 +39,34 @@
         </form>
     </div>
 </nav>
+<div class="container-fluid border" style="margin-top: 30px;width: 90%">
+    <div class="row">
+        <div class="col-xl-9 col-lg-9 clo-md-12 clo-sm-12 border-right">
+            <h2 style="margin-top: 20px"><svg class="bi bi-list-ul" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm-3 1a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+            </svg>
+                列表</h2>
+            <hr class="simple">
+            <div class="media" th:each="question : ${questions}">
+                <img  th:src="${question.user.headimg}" class="img-rounded" alt="...">
+                <div class="media-body">
+                    <a href="#" class="mt-0"><span th:text="${question.title}"></span></a><br>
+<!--                    <span style="font-size: small" th:utext="${question.description}"></span><br>-->
+                    <span class="comment_des">
+                        • <span th:text="${question.user.name}"></span> 发起了问题
+                        • <span th:text="${question.like_count}"></span> 人关注
+                        • <span th:text="${question.comment_count}"></span> 个回复
+                        • <span th:text="${question.view_count}"></span> 次浏览
+                        • <span th:text="${#dates.format(question.gmt_create, 'yyyy/MMM/dd HH:mm')}"></span>
+                        <hr>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 clo-md-12 clo-sm-12">
+        </div>
+    </div>
+</div>
 </body>
 <script type="application/javascript" src="js/headimg.js"></script>
 </html>

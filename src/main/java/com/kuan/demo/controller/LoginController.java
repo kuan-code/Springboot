@@ -46,12 +46,12 @@ public class LoginController {
         aStoken_dto.setState(state);
         aStoken_dto.setRedirect_url(cilentRedirect);
         String asToken = githubProvider.getAsToken(aStoken_dto);
+        System.out.println(asToken);
         GithubUser githubuser = githubProvider.getUser(asToken);
         if (githubuser != null){
             //登录成功
             User user = new User();
-            String id = String.valueOf(githubuser.getId());
-            user.setHeadimg("https://avatars.githubusercontent.com/u/"+id);
+            user.setHeadimg(githubuser.getAvatar_url());
             user.setAccount_id(String.valueOf(githubuser.getId()));
             user.setName(githubuser.getName());
             user.setBio(githubuser.getBio());

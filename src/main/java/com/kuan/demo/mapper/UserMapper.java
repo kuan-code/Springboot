@@ -18,4 +18,6 @@ public interface UserMapper {
     @Select("select * from user where token = #{token}")
     User checkToken(@Param("token") String value);
 
+    @Select("select * from user where account_id = #{account_id} limit 1")
+    User findByAcountID(@Param("account_id") String creator);
 }
