@@ -4,6 +4,7 @@ package com.kuan.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.kuan.demo.dto.QuestionDto;
+import com.kuan.demo.dto.paginationDto;
 import com.kuan.demo.mapper.QuestionMapper;
 import com.kuan.demo.mapper.UserMapper;
 import com.kuan.demo.model.Question;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Controller
 public class IndexController {
-
+    private Integer size=5;
     @Autowired
     private UserMapper userMapper;
 
@@ -30,7 +31,9 @@ public class IndexController {
     private QuestionService questionService;
     @GetMapping("/")
     public String index(HttpServletRequest res,
-                        Model model) {
+                        Model model,
+                        @RequestParam(name = "page",defaultValue = "1") Integer page
+                        ) {
         Cookie[] cookies = res.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -46,10 +49,11 @@ public class IndexController {
             }
         }
 
-        List<QuestionDto> questionlist = questionService.findDes();
+//        List<QuestionDto> questionlist = questionService.findDes();
+        paginationDto paginations = questionService.pageDes(page,size);
         //System.out.println(questionlist);
 
-        model.addAttribute("questions",questionlist);
+        model.addAttribute("paginations",paginations);
 
         return "index";
     }
