@@ -23,7 +23,7 @@ import java.util.List;
 
 @Controller
 public class IndexController {
-    private Integer size=5;
+
     @Autowired
     private UserMapper userMapper;
 
@@ -32,7 +32,8 @@ public class IndexController {
     @GetMapping("/")
     public String index(HttpServletRequest res,
                         Model model,
-                        @RequestParam(name = "page",defaultValue = "1") Integer page
+                        @RequestParam(name = "page",defaultValue = "1") Integer page,
+                        @RequestParam(name = "size",defaultValue = "6") Integer size
                         ) {
         Cookie[] cookies = res.getCookies();
         if (cookies != null) {

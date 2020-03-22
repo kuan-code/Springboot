@@ -8,38 +8,13 @@
     <link href="css/style.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">代码社区</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" th:if="${session.user} == null">
-                <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=bbf3271b736489a25f76&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
-            </li>
-            <li class="nav-item dropdown" th:unless="${session.user} == null">
-                <img  id="head_img" src="" style="float: left;width: 50px;height: 50px;border-radius:50%"  alt="">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
+<body style="background-image: url('images/bg2.jpg');background-repeat: no-repeat;background-size: cover">
 
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">消息中心</a>
-                    <a class="dropdown-item" href="#">个人资料</a>
-                    <a class="dropdown-item" href="/logout">退出登录</a>
-                </div>
-            </li>
-        </ul>
-        <a class="btn btn-info" href="/publish">发起问题</a>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="问题搜索" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-        </form>
-    </div>
-</nav>
-<div class="container-fluid border" style="margin-top: 30px;width: 90%">
+<div th:insert="~{Navtem :: Navtem}"></div>
+
+</div>
+<div class="container-fluid" style="margin-top: 30px;width: 90%">
     <div class="row">
         <div class="col-xl-9 col-lg-9 clo-md-12 clo-sm-12 border-right">
             <h2 style="margin-top: 20px"><svg class="bi bi-list-ul" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -62,28 +37,32 @@
                     </span>
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
+            <nav class="paginationNav" aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="firstPage">
-                            <span aria-hidden="true">&laquo;</span>
+                    <li th:if="${paginations.firstPage}" class="page-item">
+                        <a class="page-link" th:href="@{/(page=1)}" aria-label="firstPage">
+                            <span aria-hidden="true">«</span>
                         </a>
 
                     </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="pre">
-                        <span aria-hidden="true">&lt;</span>
+                    <li th:if="${paginations.pagePre}" class="page-item">
+                        <a class="page-link" th:href="@{/(page=${paginations.page}-1)}" aria-label="pre">
+                        <span aria-hidden="true">‹</span>
                     </a>
                     </li>
-                    <li class="page-item" th:each="page : ${paginations.pages}"><a class="page-link" th:href="@{/(page=${page})}"  th:text="${page}"></a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="next">
-                            <span aria-hidden="true">&gt;</span>
+                    <li class="page-item" th:each="page : ${paginations.pages}" th:class="${paginations.page==page}? 'page-item active':'' ">
+                        <a class="page-link" th:href="@{/(page=${page})}"  th:text="${page}">
+
                         </a>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="finalPage">
-                            <span aria-hidden="true">&raquo;</span>
+                    <li th:if="${paginations.pageNext}" class="page-item">
+                        <a class="page-link" th:href="@{/(page=${paginations.page}+1)}" aria-label="next">
+                            <span aria-hidden="true">›</span>
+                        </a>
+                    </li>
+                    <li th:if="${paginations.finalPage}" class="page-item">
+                        <a class="page-link" th:href="@{/(page=${paginations.pageCount})}" aria-label="finalPage">
+                            <span aria-hidden="true">»</span>
                         </a>
                     </li>
                 </ul>

@@ -11,7 +11,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>主页</title>
-
+    <link href="css/style.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!--    <script src="https://cdn.bootcss.com/simditor/2.3.28/lib/simditor.js"></script>-->
     <link href="https://cdn.bootcss.com/simditor/2.3.28/styles/simditor.css" rel="stylesheet">
@@ -26,38 +26,9 @@
     <script type="text/javascript" src="js/simditor.js"></script>
     <script type="text/javascript" src="js/page-demo.js"></script>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">代码社区</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<body style="background-image: url('images/bg2.jpg');background-repeat: no-repeat;background-size: cover">
+<div th:insert="~{Navtem :: Navtem}"></div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" th:if="${session.user} == null">
-                <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=bbf3271b736489a25f76&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
-            </li>
-
-            <li class="nav-item dropdown" th:unless="${session.user} == null">
-                <img id="head_img" src="" style="border-radius:50%;float: left;width: 50px;height: 50px"  alt="">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
-
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">消息中心</a>
-                    <a class="dropdown-item" href="#">个人资料</a>
-                    <a class="dropdown-item" href="/logout">退出登录</a>
-                </div>
-            </li>
-        </ul>
-        <a class="btn btn-info" href="/publish">发起问题</a>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="问题搜索" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
-        </form>
-    </div>
-</nav>
 <span style="color: brown" th:text="${error}"></span>
 <div class="container-fluid border" style="margin-top: 30px;width: 90%">
     <div class="row">

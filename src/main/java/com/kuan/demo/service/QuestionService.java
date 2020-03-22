@@ -37,10 +37,20 @@ public class QuestionService {
     }
 
     public paginationDto pageDes(Integer page, Integer size) {
+        paginationDto paginationDto = new paginationDto();
+        Integer questionCount = questionMapper.findCount();
+        paginationDto.autoPageProfile(questionCount,page,size);
+
+        if(page<1){
+            page=1;
+        }
+
+        if(page>paginationDto.getPageCount()) {
+            page = paginationDto.getPageCount();
+        }
         Integer offset = size*(page-1);
         List<Question> questionlist = questionMapper.pagelistfind(offset,size);
         List<QuestionDto> questionDtoList = new ArrayList<>();
-        paginationDto paginationDto = new paginationDto();
         for (Question question : questionlist) {
             User user = userMapper.findByAcountID(String.valueOf(question.getCreator()));
             QuestionDto questionDto = new QuestionDto();
@@ -49,8 +59,7 @@ public class QuestionService {
             questionDtoList.add(questionDto);
         }
         paginationDto.setQuestions(questionDtoList);
-        Integer questionCount = questionMapper.findCount();
-        paginationDto.autoPageProfile(questionCount,page,size);
+
         return paginationDto;
     }
 }

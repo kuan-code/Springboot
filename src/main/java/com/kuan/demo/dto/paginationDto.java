@@ -16,16 +16,25 @@ public class paginationDto {
     private Boolean firstPage;
     private Boolean finalPage;
     private List<Integer> pages =new ArrayList<>();
+    private Integer pageCount;
 
 
     public void autoPageProfile(Integer questionCount, Integer page, Integer size) {
-        Integer pageCount;
         //计算分页总数
         if (questionCount % size == 0) {
             pageCount=questionCount/size;
         }else {
             pageCount=questionCount/size+1;
         }
+
+        if(page<1){
+            page=1;
+        }
+
+        if(page>pageCount) {
+            page = pageCount;
+        }
+        this.page = page;
         pages.add(page);
         for( int i=1 ;i<=3;i++){
             if((page-i)>0){

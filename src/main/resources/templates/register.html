@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class=" no-touchevents" data-blockbyte-bs-uid="59110"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+    <meta name="theme-color" content="#4285f4">
+    <title>注册界面</title>
+    <!-- css -->
+
+    <link href="register/base.min.css" rel="stylesheet">
+    <link href="register/project.min.css" rel="stylesheet">
+    <link href="register/auth.css" rel="stylesheet">
+    <link href="register/css" rel="stylesheet">
+    <style>
+        .divcss5 {
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+    <!-- favicon -->
+    <!-- js -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+    <script src="register/fuck.js"></script><style type="text/css" abt="234"></style>
+    <!-- ... -->
+    <script>//remove baidu search ad
+    var _countAA = 0
+    function doBBBd(){
+        var alla = document.getElementsByTagName('a')
+        for(var i = 0; i < alla.length; i++){
+            if(/baidu.com\/(baidu.php\?url=|adrc.php\?t)/.test(alla[i].href)){
+                var _temp = alla[i].parentElement, loop = 0
+                while(loop < 5){
+                    _temp = _temp.parentElement
+                    loop++
+                    if(_temp.parentElement.id == 'content_left'){
+                        _temp.remove()
+                        break
+                    }
+                }
+            }
+        }
+
+        if(_countAA++ < 20){
+            setTimeout(doBBBd, 500)
+        }
+
+    }
+    doBBBd()
+    document.addEventListener('keyup', function(){_countAA-=10;doBBBd()}, false);
+    document.addEventListener('click', function(){_countAA-=10;doBBBd()}, false)
+
+    </script>
+    <style class="blockbyte-bs-style" data-name="content">body>div#blockbyte-bs-indicator>div{opacity:0;pointer-events:none}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible,body>iframe#blockbyte-bs-overlay.blockbyte-bs-visible{opacity:1;pointer-events:auto}body.blockbyte-bs-noscroll{overflow:hidden !important}body>div#blockbyte-bs-indicator>div{position:absolute;transform:translate3d(-40px, 0, 0);top:0;left:0;width:40px !important;height:100%;background:rgba(0,0,0,0.5);border-radius:0 10px 10px 0;transition:opacity 0.3s, transform 0.3s;z-index:2}body>div#blockbyte-bs-indicator>div>span{-webkit-mask:no-repeat center/32px;-webkit-mask-image:url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);background-color:#ffffff;position:absolute;display:block;top:0;left:0;width:100%;height:100%}body>div#blockbyte-bs-indicator[data-pos='right']{left:auto;right:0}body>div#blockbyte-bs-indicator[data-pos='right']>div{transform:translate3d(40px, 0, 0);left:auto;right:0;border-radius:10px 0 0 10px}body>div#blockbyte-bs-indicator.blockbyte-bs-fullHeight>div{border-radius:0}body>div#blockbyte-bs-indicator.blockbyte-bs-hover>div{transform:translate3d(0, 0, 0);opacity:1}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb{height:100% !important;top:0 !important}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb>div{background:transparent}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb>div>span{-webkit-mask-position-y:20px}body>iframe#blockbyte-bs-sidebar{width:350px;max-width:none;height:0;z-index:2147483646;background-color:rgba(255,255,255,0.8) !important;border:none;display:block !important;transform:translate3d(-350px, 0, 0);will-change:width, height, opacity, transform;transition:width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s}body>iframe#blockbyte-bs-sidebar[data-pos='right']{left:auto;right:0;transform:translate3d(350px, 0, 0)}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible{width:calc(100% + 350px);height:100%;transform:translate3d(0, 0, 0);transition:opacity 0.3s, transform 0.3s}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask{background:none !important}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask:not(.blockbyte-bs-hover){width:calc(350px + 50px)}body>iframe#blockbyte-bs-overlay{width:100%;max-width:none;height:100%;z-index:2147483647;border:none;background:rgba(0,0,0,0.5) !important;transition:opacity 0.3s}
+    </style>
+</head>
+
+
+
+<body class="page-brand">
+
+
+
+<div class="authpage auth-reg">
+    <div class="container">
+        <section class="content-inner">
+            <div class="auth-main auth-row">
+                <div class="auth-top auth-row">
+                    <a class="boardtop-left" href="/">
+                        <div>首 页</div>
+                    </a>
+                    <div class="auth-logo">
+                        <img src="register/authlogo.jpg">
+                    </div>
+                    <a href="/login" class="boardtop-right">
+                        <div>登 录</div>
+                    </a>
+                </div>
+                <form id="form" action="/register" method="post" >
+                <div class="rowtocol">
+                    <div class="auth-row">
+                        <div class="form-group-label auth-row">
+                            <label class="floating-label" for="name">昵称</label>
+                            <input required name="username" class="form-control maxwidth-auth" id="name" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="rowtocol">
+                    <div class="auth-row">
+                        <div class="form-group-label auth-row">
+                            <label class="floating-label" for="email">邮箱(唯一凭证请认真对待)</label>
+                            <input  required name="email" class="form-control maxwidth-auth" id="email" type="text" maxlength="32">
+                            <p id="emailCheck" style="text-align: center; margin: 3px; font-size: 80%"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rowtocol">
+                    <div class="auth-row">
+                        <div class="form-group-label auth-row">
+                            <label class="floating-label" for="passwd">密码</label>
+                            <input required name="password" class="form-control maxwidth-auth" id="passwd" type="password">
+                            <p id="passwd-strong" style="text-align: left; margin: 3px; font-size: 80%"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rowtocol">
+                    <div class="auth-row">
+                        <div class="form-group form-group-label">
+                            <label class="floating-label" for="repasswd">重复密码</label>
+                            <input required class="form-control maxwidth-auth" id="repasswd" type="password">
+                            <p id="passwdCheck" style="text-align: center; margin: 3px; font-size: 80%"></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rowtocol">
+                    <div class="btn-auth auth-row">
+                        <button onclick="check()" id="tos" type="button" class="btn-reg btn btn-block btn-brand waves-attach waves-light waves-effect">确认注册
+                        </button>
+                    </div>
+                </div>
+                </form>
+                <div class="auth-bottom auth-row auth-reg">
+                    <div class="tgauth">
+
+                        <p>注册即代表同意<a href="https://woocloud.icu/tos">服务条款</a>，以及保证所录入信息的真实性，如有不实信息会导致账号被删除。</p>
+
+                        <!-- <span>Telegram</span><button class="btn" id="calltgauth"><i class="icon icon-lg">near_me</i></button><span>快捷登录</span> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="card auth-tg">
+            <div class="card-main">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div aria-hidden="true" class="modal modal-va-middle fade" id="tos_modal" role="dialog" tabindex="-1">
+    <div style="width: 360px" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-inner">
+                <ul>
+                    <li><h4 style="font-weight: bold">注册成功！</h4></li>
+                </ul>            </div>
+            <div class="modal-footer">
+                <p class="text-right">
+                    <button onclick="sunbmit_form()" class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" id="reg" type="button"><span style="font-weight: bold">确认</span>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tiphidden"></div>
+
+<div aria-hidden="true" class="modal modal-va-middle fade" id="result" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-inner">
+                <p class="h5 margin-top-sm text-black-hint" id="msg"></p>
+            </div>
+            <div class="modal-footer">
+                <p class="text-right">
+                    <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button" id="result_ok">知道了
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- js -->
+<script src="register/jquery@2.2.1"></script>
+<script src="register/base.min.js"></script>
+<script src="register/project.min.js"></script>
+
+
+
+<script>
+    function CharMode(iN){
+        if (iN >= 48 && iN <= 57) //数字
+            return 1;
+        if (iN >= 65 && iN <= 90) //大写
+            return 2;
+        if (iN >= 97 && iN <= 122) //小写
+            return 4;
+        else
+            return 8;
+    }
+
+    //计算密码模式
+    function bitTotal(num){
+        modes = 0;
+        for (i = 0;i < 4;i++){
+            if (num & 1)
+                modes++;
+            num >>>= 1;
+        }
+
+        return modes;
+
+    }
+    //返回强度级别
+    function checkStrong(sPW){
+        if (sPW.length < 6)
+            return 0;           //密码太短，不检测级别
+        Modes = 0;
+        for (i = 0; i < sPW.length; i++){
+            //密码模式
+            Modes |= CharMode(sPW.charCodeAt(i));
+        }
+        console.log(bitTotal(Modes));
+        return bitTotal(Modes);
+    }
+
+
+    document.getElementById('passwd').addEventListener("input",function () {
+        var passwd = document.getElementById("passwd").value;
+        var strong =  checkStrong(passwd);
+        const  pas_strong = document.getElementById('passwd-strong');
+        if (strong == 0) {
+            pas_strong.innerHTML = '需大于 8 位；推荐使用包含大小写字母、数字、符号的密码';
+        } else if (strong == 1) {
+            pas_strong.innerHTML = '<span style="text-align: left;font-weight: bold">你的密码强度为：</span><progress  value="20" max="100"></progress>';
+        } else if (strong == 2) {
+            pas_strong.innerHTML = '<span style="text-align: left;font-weight: bold">你的密码强度为：<progress value="50" max="100"></progress>';
+        } else if (strong == 3) {
+            pas_strong.innerHTML = '<span style="text-align: left;font-weight: bold">你的密码强度为：<progress value="80" max="100"></progress>';
+        }
+    })
+</script>
+</body>
+<script type="text/javascript" src="register/checkForm.js"></script>
+</html>

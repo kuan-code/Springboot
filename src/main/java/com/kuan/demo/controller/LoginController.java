@@ -34,6 +34,13 @@ public class LoginController {
     @Autowired
     private UserMapper userMapper;
 
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+
     @GetMapping("/callback")
     public String AS_token(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
